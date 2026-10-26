@@ -531,7 +531,7 @@ async function exportCollectionImage(){
   const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,"#f5e8cb");bg.addColorStop(.52,"#e9d1a4");bg.addColorStop(1,"#f8edda");ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
   ctx.fillStyle="#684321";ctx.fillRect(0,178,W,footerY-178);ctx.fillStyle="#f6e7c6";ctx.fillRect(18,18,W-36,160);ctx.fillStyle="#f5e6c4";ctx.fillRect(18,footerY,W-36,H-footerY-18);
   ctx.strokeStyle="#b78a4f";ctx.lineWidth=4;ctx.strokeRect(22,22,W-44,H-44);
-  ctx.fillStyle="#422b13";ctx.textAlign="center";ctx.font="900 40px sans-serif";ctx.fillText("MONSTER HUNTER WILDS",W/2,68);
+  ctx.fillStyle="#422b13";ctx.textAlign="center";ctx.font="900 40px sans-serif";ctx.fillText(activeGame==="ascendance"?"MONSTER HUNTER WILDS ACENDANCE":"MONSTER HUNTER WILDS",W/2,68);
   ctx.fillStyle="#5b3514";ctx.font="900 52px sans-serif";ctx.fillText("金冠チェックリスト",W/2,126);
   ctx.fillStyle="#6d5a43";ctx.font="24px sans-serif";ctx.fillText(new Date().toLocaleDateString("ja-JP")+" 記録",W/2,162);
   const eligible=data.filter(m=>m.max!==null);

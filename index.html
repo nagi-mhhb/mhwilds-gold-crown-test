@@ -396,10 +396,16 @@ limitUncheckModal.addEventListener("click",e=>{const b=e.target.closest("[data-l
 listEl.addEventListener("click",(e)=>{
   const b=e.target.closest("button.crown");if(!b)return;
   const i=Number(b.dataset.i),t=b.dataset.t;if(!Number.isInteger(i)||!data[i]||!(t in data[i]))return;if(data[i][t]===null)return;
+  // When a checked limit crown is tapped, ask how to handle the paired normal crown.
   if((t==="lmax"||t==="lmin")&&data[i][t]===1){openLimitUncheck(i,t);return;}
-  data[i][t]=1;
-  // Acquiring a limit crown automatically completes its corresponding normal crown.
-  if(t==="lmax")data[i].max=1;if(t==="lmin")data[i].min=1;
+  // Normal crowns can always be toggled both ON and OFF.
+  if(t==="max"||t==="min"){
+    data[i][t]=data[i][t]===1?0:1;
+  }else{
+    data[i][t]=data[i][t]===1?0:1;
+    // Acquiring a limit crown automatically completes its corresponding normal crown.
+    if(t==="lmax")data[i].max=1;if(t==="lmin")data[i].min=1;
+  }
   saveData();if(filter!=="all"||searchText){render();return;}updateOneRow(i);
 });
 
